@@ -29,6 +29,16 @@ const UserService = {
         return UserModel.create({
             username, introduction, gender, avatar, password, role
         })
+    },
+
+    //用户列表
+    getList: async () => {
+        return UserModel.find({}, ["username", "role", "avatar", "introduction", "gender"])
+    },
+
+    //删除用户
+    delList: async ({ _id }) => {
+        return UserModel.deleteOne({ _id })
     }
 }
 

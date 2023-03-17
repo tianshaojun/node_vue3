@@ -77,6 +77,25 @@ const UserController = {
             ActionType: "OK",
         })
     },
+
+    //用户列表
+    getList: async (req, res) => {
+        const result = await UserService.getList()
+        res.send({
+            ActionType: "OK",
+            data: result
+        })
+    },
+
+    //删除用户
+    delList: async (req, res) => {
+        // console.log(req.params.id)
+
+        const result = await UserService.delList({ _id: req.params.id })
+        res.send({
+            ActionType: "OK"
+        })
+    }
 }
 
 module.exports = UserController
