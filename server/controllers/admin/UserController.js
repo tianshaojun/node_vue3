@@ -80,10 +80,18 @@ const UserController = {
 
     //用户列表
     getList: async (req, res) => {
-        const result = await UserService.getList()
+        const result = await UserService.getList(req.params)
         res.send({
             ActionType: "OK",
             data: result
+        })
+    },
+
+    //更新列表
+    putList: async (req, res) => {
+        const result = await UserService.putList(req.body)
+        res.send({
+            ActionType: "OK"
         })
     },
 

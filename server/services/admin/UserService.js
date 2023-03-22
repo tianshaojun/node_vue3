@@ -32,8 +32,13 @@ const UserService = {
     },
 
     //用户列表
-    getList: async () => {
-        return UserModel.find({}, ["username", "role", "avatar", "introduction", "gender"])
+    getList: async ({ id }) => {
+        return id ? UserModel.find({ _id: id }, ["username", "role", "introduction", "password"]) : UserModel.find({}, ["username", "role", "avatar", "introduction", "gender"])
+    },
+
+    //更新列表
+    putList: async (body) => {
+        return UserModel.updateOne({ _id: body._id }, body)
     },
 
     //删除用户
