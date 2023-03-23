@@ -20,10 +20,12 @@ const routes = [
     {
         path: '/user-manage/adduser',
         component: UserAdd,
+        requireAdmin: true
     },
     {
         path: '/user-manage/userlist',
         component: UserList,
+        requireAdmin: true
     },
     {
         path: '/news-manage/addnews',

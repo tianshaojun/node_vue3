@@ -6,7 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const UserRouter = require('./routes/admin/UserRouter');
+const UserRouter = require('./routes/admin/UserRouter'); //与用户相关的路由
+const NewsRouter = require('./routes/admin/NewsRouter'); //与新闻相关的路由
+
 
 const JWT = require("./util/JWT")
 
@@ -24,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 
 
 /** 
@@ -56,6 +59,8 @@ app.use((req, res, next) => {
 
 
 app.use(UserRouter);
+app.use(NewsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

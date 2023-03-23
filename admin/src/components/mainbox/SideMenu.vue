@@ -15,7 +15,7 @@
                 </el-icon>
                 <span>个人中心</span>
             </el-menu-item>
-            <el-sub-menu index="/user-manage">
+            <el-sub-menu index="/user-manage" v-admin>
                 <template #title>
                     <el-icon>
                         <user-filled />
@@ -52,7 +52,18 @@
 <script setup>
 import { HomeFilled, Avatar, UserFilled, MessageBox, Reading, Pointer } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 const route = useRouter()
+const store = useStore()
+
+const vAdmin = {
+    mounted(el) {
+        // console.log(el, store.state.userInfo.role);
+        if (store.state.userInfo.role !== 1) {
+            el.parentNode.removeChild(el);
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>
