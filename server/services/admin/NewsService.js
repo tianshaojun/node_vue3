@@ -8,9 +8,36 @@ const NewsService = {
         })
     },
     //新闻列表
-    getList: async () => {
-        return NewsModel.find({})
-    }
+    getList: async ({ _id }) => {
+        return _id ? NewsModel.find({ _id }) : NewsModel.find({})
+    },
+    //更新列表
+    updateList: async ({ _id, title, content, category, isPublish, cover, editTime }) => {
+        if (cover) {
+            return NewsModel.updateOne({ _id }, {
+                title, content, category, isPublish, cover, editTime
+            })
+        } else {
+            return NewsModel.updateOne({ _id }, {
+                title, content, category, isPublish, editTime
+            })
+        }
+    },
+    //发布新闻
+    publish: async ({ _id, isPublish, editTime }) => {
+        return NewsModel.updateOne({
+            _id
+        }, {
+            isPublish,
+            editTime
+        })
+    },
+    //删除新闻
+    delList: async ({ _id }) => {
+        return NewsModel.deleteOne({
+            _id
+        })
+    },
 }
 
 module.exports = NewsService
