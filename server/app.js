@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 const UserRouter = require('./routes/admin/UserRouter'); //与用户相关的路由
 const NewsRouter = require('./routes/admin/NewsRouter'); //与新闻相关的路由
 const ProductRouter = require('./routes/admin/ProductRouter'); //与产品相关的路由
+const webNewsRouter = require('./routes/web/NewsRouter'); //web新闻列表
 
 
 const JWT = require("./util/JWT")
@@ -27,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.use(webNewsRouter);
 
 
 
