@@ -52,17 +52,17 @@ const router = useRouter();
 const currentNews = ref({});
 const topNews = ref([]);
 const stop = watchEffect(async () => {
-    //   console.log(111,route.params.id)
+    //console.log(111,route.params.id)
     if (!route.params.id) return
     const res1 = await axios.get(`/webapi/news/list/${route.params.id}`);
     const res2 = await axios.get(`/webapi/news/toplist?limit=4`);
-    //   console.log(res2.data.data)
+    //console.log(res2.data.data)
     currentNews.value = res1.data.data[0];
     topNews.value = res2.data.data;
 });
 
 onBeforeUnmount(() => {
-    console.log(222, "onBeforeUnmount")
+    // console.log(222, "onBeforeUnmount")
     stop()
 })
 

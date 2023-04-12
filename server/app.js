@@ -10,6 +10,7 @@ const UserRouter = require('./routes/admin/UserRouter'); //与用户相关的路
 const NewsRouter = require('./routes/admin/NewsRouter'); //与新闻相关的路由
 const ProductRouter = require('./routes/admin/ProductRouter'); //与产品相关的路由
 const webNewsRouter = require('./routes/web/NewsRouter'); //web新闻列表
+const webProductRouter = require('./routes/web/ProductRouter'); //web产品与服务
 
 
 const JWT = require("./util/JWT")
@@ -30,7 +31,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.use(webNewsRouter);
-
+app.use(webProductRouter);
 
 
 /** 
